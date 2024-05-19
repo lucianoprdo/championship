@@ -5,9 +5,9 @@ import mapStatusHTTP from '../utils/mapStatusHTTP';
 async function getAllController(_req: Request, res: Response) {
   const { status, data } = await teamsService.getAllService();
 
-  const code = mapStatusHTTP(status);
+  const codeStatus = mapStatusHTTP(status);
 
-  return res.status(code).json(data);
+  return res.status(codeStatus).json(data);
 }
 
 async function getByIdController(req: Request, res: Response) {
@@ -15,9 +15,9 @@ async function getByIdController(req: Request, res: Response) {
 
   const { status, data } = await teamsService.findByIdService(Number(id));
 
-  const code = mapStatusHTTP(status);
+  const codeStatus = mapStatusHTTP(status);
 
-  return res.status(code).json(data);
+  return res.status(codeStatus).json(data);
 }
 
 export default {
