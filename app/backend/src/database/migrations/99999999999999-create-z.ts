@@ -1,5 +1,5 @@
 import { Model, QueryInterface, DataTypes } from 'sequelize';
-import IExample from '../../Interfaces/Example';
+import IExample from '../../Interfaces/IExample';
 
 export default {
   up(queryInterface: QueryInterface) {
