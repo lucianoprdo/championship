@@ -1,5 +1,5 @@
 import { Model, QueryInterface, DataTypes } from 'sequelize';
-import { IMatch } from '../../Interfaces/matches/Imatches';
+import { IMatch } from '../../Interfaces/matches/IMatches';
 
 export default {
   up(queryInterface: QueryInterface) {
@@ -13,6 +13,7 @@ export default {
       homeTeamId: {
         field: 'home_team_id',
         type: DataTypes.INTEGER,
+
         allowNull: false,
         references: {
           model: 'teams',
@@ -22,22 +23,22 @@ export default {
       homeTeamGoals: {
         type: DataTypes.STRING,
         allowNull: false,
-        field: 'home_team_goals'
+        field: 'home_team_goals',
       },
       awayTeamId: {
         type: DataTypes.STRING,
         allowNull: false,
-        field: 'away_team_id'
+        field: 'away_team_id',
       },
       awayTeamGoals: {
         type: DataTypes.STRING,
         allowNull: false,
-        field: 'away_team_goals'
+        field: 'away_team_goals',
       },
       inProgress: {
         type: DataTypes.STRING,
         allowNull: false,
-        field: 'in_progress'
+        field: 'in_progress',
       },
     });
   },

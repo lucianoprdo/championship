@@ -1,25 +1,27 @@
 import {
-    DataTypes,
-    Model,
-    InferAttributes,
-    InferCreationAttributes,
-    CreationOptional,
-  } from 'sequelize';
-  import db from '.';
-  // import OtherModel from './OtherModel';
-  import TeamsModel from './MatchesModel';
-  
-  class MatchesModel extends Model<InferAttributes<MatchesModel>,
-  InferCreationAttributes<MatchesModel>> {
-    declare id: CreationOptional<number>;
-    declare homeTeamId: number;
-    declare homeTeamGoals: number;
-    declare awayTeamId: number;
-    declare awayTeamGoals: number;
-    declare inProgress: number;
-  }
-  
-  MatchesModel.init({
+  DataTypes,
+  Model,
+  InferAttributes,
+  InferCreationAttributes,
+  CreationOptional,
+} from 'sequelize';
+import db from '.';
+import TeamsModel from './TeamsModel';
+
+class MatchesModel extends Model<
+InferAttributes<MatchesModel>,
+InferCreationAttributes<MatchesModel>
+> {
+  declare id: CreationOptional<number>;
+  declare homeTeamId: number;
+  declare homeTeamGoals: number;
+  declare awayTeamId: number;
+  declare awayTeamGoals: number;
+  declare inProgress: number;
+}
+
+MatchesModel.init(
+  {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -54,17 +56,25 @@ import {
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },
-  }, {
-      tableName: 'matches',
-      sequelize: db,
+  },
+  {
+    tableName: 'matches',
+    sequelize: db,
     timestamps: false,
     underscored: true,
-  });
-  
-  MatchesModel.belongsTo(TeamsModel, { foreignKey: 'homeTeamId', as: 'homeTeam' });
-  MatchesModel.belongsTo(TeamsModel, { foreignKey: 'awayTeamId', as: 'awayTeam' });
-  
-  TeamsModel.hasMany(MatchesModel, { foreignKey: 'homeTeamId', as: 'homeGames' });
-  TeamsModel.hasMany(MatchesModel, { foreignKey: 'awayTeamId', as: 'awayGames' });
-  
-  export default MatchesModel;
+  },
+);
+
+MatchesModel.belongsTo(TeamsModel, {
+  foreignKey: 'homeTeamId',
+  as: 'homeTeam',
+});
+MatchesModel.belongsTo(TeamsModel, {
+  foreignKey: 'awayTeamId',
+  as: 'awayTeam',
+});
+
+TeamsModel.hasMany(MatchesModel, { foreignKey: 'homeTeamId', as: 'homeGames' });
+TeamsModel.hasMany(MatchesModel, { foreignKey: 'awayTeamId', as: 'awayGames' });
+
+export default MatchesModel;
