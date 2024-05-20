@@ -38,7 +38,7 @@ export default class Validations {
       return res.status(401).json({ message: 'Token not found' });
     }
 
-    const token = authHeader.split(' ')[1]; 
+    const token = authHeader.split(' ')[1];
 
     if (!token) {
       return res.status(401).json({ message: Validations.invalidTokenMessage });
