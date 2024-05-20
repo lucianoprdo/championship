@@ -7,13 +7,13 @@ const usersController = new UsersController();
 const usersRouter = Router();
 
 usersRouter.post(
-  '/',
+  '/login',
   Validations.validateLogin,
   (req: Request, res: Response) => usersController.login(req, res),
 );
 
 usersRouter.get(
-  '/role',
+  '/login',
   Validations.validateToken,
   (req: Request, res: Response) => usersController.getRole(req, res),
 );
