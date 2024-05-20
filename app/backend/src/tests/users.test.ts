@@ -4,7 +4,7 @@ import * as chai from 'chai';
 import chaiHttp = require('chai-http');
 
 import { App } from '../app';
-import SequelizeUsers from '../database/models/UsersModel';
+import UsersModel from '../database/models/UsersModel';
 import mocks from './mocks/users';
 import JWT from '../utils/JWT';
 
@@ -18,7 +18,7 @@ describe('POST /login', () => {
   let chaiHttpResponse: Response;
 
   it('Must return status 400 with valid username and incorrect password', async () => {
-    sinon.stub(SequelizeUsers, 'findOne').resolves(mocks.userFromDB as any);
+    sinon.stub(UsersModel, 'findOne').resolves(mocks.userFromDB as any);
     const { email, password } = mocks.userLoginBody;
 
     const { status, body } = await chai
@@ -32,7 +32,7 @@ describe('POST /login', () => {
   });
 
   it('Must return a token with status 200', async () => {
-    sinon.stub(SequelizeUsers, 'findOne').resolves(mocks.userFromDB as any);
+    sinon.stub(UsersModel, 'findOne').resolves(mocks.userFromDB as any);
     const { email, password } = mocks.userLoginBody;
 
     const { status, body } = await chai
@@ -45,7 +45,7 @@ describe('POST /login', () => {
     expect(body.token).to.be.an('string');
   });
   it('Should return status 400 without email', async () => {
-    sinon.stub(SequelizeUsers, 'findOne').resolves(mocks.userFromDB as any);
+    sinon.stub(UsersModel, 'findOne').resolves(mocks.userFromDB as any);
     const { email, password } = mocks.userLoginBody;
 
     const { status, body } = await chai
@@ -59,7 +59,7 @@ describe('POST /login', () => {
   });
 
   it('Must return 401 status with invalid user', async () => {
-    sinon.stub(SequelizeUsers, 'findOne').resolves(null);
+    sinon.stub(UsersModel, 'findOne').resolves(null);
     const { email, password } = mocks.userLoginBody;
 
     const { status, body } = await chai
@@ -73,7 +73,7 @@ describe('POST /login', () => {
   });
 
   it('Should return status 400 without email', async () => {
-    sinon.stub(SequelizeUsers, 'findOne').resolves(mocks.userFromDB as any);
+    sinon.stub(UsersModel, 'findOne').resolves(mocks.userFromDB as any);
     const { email, password } = mocks.userLoginBody;
 
     const { status, body } = await chai
@@ -93,7 +93,7 @@ describe('GET /login/role', () => {
   let chaiHttpResponse: Response;
 
   it('Should return 401 status with correct error message when there is invalid token', async () => {
-    // sinon.stub(SequelizeUsers, 'findOne').resolves(mocks.userFromDB as any);
+    // sinon.stub(UsersModel, 'findOne').resolves(mocks.userFromDB as any);
     sinon.stub(JWT, 'verify').returns('Token must be a valid token');
 
     const { email, password } = mocks.userLoginBody;
@@ -110,7 +110,7 @@ describe('GET /login/role', () => {
   });
 
   it('It must return status 200 with an object containing the users role when there is a valid token', async () => {
-    sinon.stub(SequelizeUsers, 'findOne').resolves(mocks.userFromDB as any);
+    sinon.stub(UsersModel, 'findOne').resolves(mocks.userFromDB as any);
     sinon.stub(JWT, 'verify').returns('valideToken');
 
     const { email, password } = mocks.userLoginBody;
@@ -127,7 +127,7 @@ describe('GET /login/role', () => {
   });
 
   it('Should return 401 status with correct error message when there is no token', async () => {
-    sinon.stub(SequelizeUsers, 'findOne').resolves(mocks.userFromDB as any);
+    sinon.stub(UsersModel, 'findOne').resolves(mocks.userFromDB as any);
 
     const { email, password } = mocks.userLoginBody;
 
