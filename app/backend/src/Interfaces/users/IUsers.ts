@@ -9,5 +9,3 @@ export interface IUser extends IExample, ILogin {
   username: string;
   role: string;
 }
-
-export type Token = { token: string };

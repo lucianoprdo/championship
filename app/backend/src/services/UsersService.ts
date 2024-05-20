@@ -6,6 +6,7 @@ import {
   ServiceResponseError,
 } from '../Interfaces/ServiceResponse';
 import JWT from '../utils/JWT';
+import { IUsersModel } from '../Interfaces/users/IUserModel';
 
 export default class UsersService {
   private invalidDataResponse: ServiceResponseError = {
@@ -14,7 +15,7 @@ export default class UsersService {
   };
 
   constructor(
-    private usersModel: any = new UsersModel(),
+    private usersModel: IUsersModel = new UsersModel(),
     private jwtService = JWT,
   ) {}
 
