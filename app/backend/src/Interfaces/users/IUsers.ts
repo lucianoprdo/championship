@@ -1,11 +1,13 @@
-export type IUsers = {
-  id: number;
-  username: string;
-  role: string;
+import IExample from '../IExample';
+
+export interface ILogin {
   email: string;
   password: string;
-};
+}
+
+export interface IUser extends IExample, ILogin {
+  username: string;
+  role: string;
+}
 
 export type Token = { token: string };
-
-export type Login = { email: string; password: string };
