@@ -6,6 +6,7 @@ import {
   ServiceResponseError,
 } from '../Interfaces/ServiceResponse';
 import JWT from '../utils/JWT';
+
 export default class UsersService {
   private invalidDataResponse: ServiceResponseError = {
     status: 'UNAUTHORIZED',
