@@ -19,6 +19,8 @@ export default {
           model: 'teams',
           key: 'id',
         },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
       homeTeamGoals: {
         type: DataTypes.STRING,
@@ -29,6 +31,12 @@ export default {
         type: DataTypes.STRING,
         allowNull: false,
         field: 'away_team_id',
+        references: {
+          model: 'teams',
+          key: 'id',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
       awayTeamGoals: {
         type: DataTypes.STRING,
