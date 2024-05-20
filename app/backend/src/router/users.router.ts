@@ -13,7 +13,7 @@ usersRouter.post(
 );
 
 usersRouter.get(
-  '/login',
+  '/role',
   Validations.validateToken,
   (req: Request, res: Response) => usersController.getRole(req, res),
 );
