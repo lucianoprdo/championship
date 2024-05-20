@@ -6,11 +6,12 @@ import {
   CreationOptional,
 } from 'sequelize';
 import db from '.';
+import { IUser } from '../../Interfaces/users/IUsers';
 
 class UsersModel extends Model<
-InferAttributes<UsersModel>,
-InferCreationAttributes<UsersModel>
-> {
+  InferAttributes<UsersModel>,
+  InferCreationAttributes<UsersModel>
+> implements IUser {
   declare id: CreationOptional<number>;
   declare role: string;
   declare username: string;

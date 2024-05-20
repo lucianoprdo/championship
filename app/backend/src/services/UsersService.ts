@@ -1,11 +1,12 @@
 import * as bcrypt from 'bcryptjs';
 import { IUser } from '../Interfaces/users/IUsers';
-import UsersModel from '../database/models/UsersModel';
 import {
   ServiceResponse,
   ServiceResponseError,
 } from '../Interfaces/ServiceResponse';
 import JWT from '../utils/JWT';
+import { IUsersModel } from '../Interfaces/users/IUserModel';
+import ModelUsers from '../models/ModelUsers';
 
 export default class UsersService {
   private invalidDataResponse: ServiceResponseError = {
@@ -14,7 +15,7 @@ export default class UsersService {
   };
 
   constructor(
-    private usersModel: any = new UsersModel(),
+    private usersModel: IUsersModel = new ModelUsers(),
     private jwtService = JWT,
   ) {}
 
