@@ -6,8 +6,16 @@ const usersController = new UsersController();
 
 const usersRouter = Router();
 
-usersRouter.post('/', Validations.validateLogin, (req: Request, res: Response) => usersController.login(req, res));
+usersRouter.post(
+  '/',
+  Validations.validateLogin,
+  (req: Request, res: Response) => usersController.login(req, res),
+);
 
-usersRouter.get('/role', Validations.validateToken, (req: Request, res: Response) => usersController.getRole(req, res));
+usersRouter.get(
+  '/role',
+  Validations.validateToken,
+  (req: Request, res: Response) => usersController.getRole(req, res),
+);
 
 export default usersRouter;

@@ -6,7 +6,11 @@ import mapStatusHTTP from '../utils/mapStatusHTTP';
 export default class Validations {
   private static invalidTokenMessage = 'Token must be a valid token';
 
-  static validateLogin(req: Request, res: Response, next: NextFunction): Response | void {
+  static validateLogin(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Response | void {
     if (!req.body.email || !req.body.password) {
       return res.status(400).json({ message: 'All fields must be filled' });
     }
@@ -20,8 +24,11 @@ export default class Validations {
     next();
   }
 
-  static validateToken(req: Request, res: Response, next: NextFunction):
-  Response | void {
+  static validateToken(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Response | void {
     if (!req.headers.authorization) {
       return res.status(401).json({ message: 'Token not found' });
     }
