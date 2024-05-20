@@ -15,7 +15,7 @@ export default class UsersService {
   };
 
   constructor(
-    private usersModel: IUsersModel = new UsersModel(),
+    private usersModel: any = new UsersModel(),
     private jwtService = JWT,
   ) {}
 
