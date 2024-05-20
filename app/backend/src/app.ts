@@ -2,8 +2,6 @@ import * as express from 'express';
 import 'express-async-errors';
 
 import errorMiddleware from './middlewares/errorMiddleware';
-import teamsRouter from './router/teams.routes';
-import usersRouter from './router/users.routes';
 import router from './router';
 
 class App {
