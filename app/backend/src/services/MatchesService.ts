@@ -10,7 +10,7 @@ export default class MatchesService {
     private matchesModel: IMatchesModel = new ModelMatches(),
     private teamsModel: any = new TeamsModel(),
   ) {}
-  
+
   public async getAllMatches(
     inProgress: string | null,
   ): Promise<ServiceResponse<IMatch[]>> {
