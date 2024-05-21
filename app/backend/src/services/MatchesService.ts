@@ -2,13 +2,12 @@ import { IMatchesModel } from '../Interfaces/matches/IMatchesModel';
 import ModelMatches from '../models/ModelMatches';
 import { IMatch } from '../Interfaces/matches/IMatches';
 import { ServiceResponse } from '../Interfaces/ServiceResponse';
-import { ITeamsModel } from '../Interfaces/teams/ITeamsModel';
-import ModelTeams from '../models/ModelTeams';
+import TeamsModel from '../database/models/TeamsModel';
 
 export default class MatchesService {
   constructor(
     private matchesModel: IMatchesModel = new ModelMatches(),
-    private teamsModel: any = new ModelTeams(),
+    private teamsModel: any = new TeamsModel(),
   ) {}
 
   public async getAllMatches(
