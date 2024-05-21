@@ -13,13 +13,13 @@ export default class MatchesService {
   public async getAllMatches(
     inProgress: string | null,
   ): Promise<ServiceResponse<IMatch[]>> {
-    let matches: IMatch[];
-
-    if (inProgress !== null) {
-      matches = await this.matchesModel.findAllInProgress(inProgress);
-    } else {
-      matches = await this.matchesModel.findAll();
+    if (inProgress) {
+      const matches = await this.matchesModel.findAllInProgress(inProgress);
+      return { status: 'SUCCESSFUL', data: matches };
     }
+
+    const matches = await this.matchesModel.findAll();
+
     return { status: 'SUCCESSFUL', data: matches };
   }
 
