@@ -1,8 +1,32 @@
-import { Router } from 'express';
+import { Request, Response, Router } from 'express';
+import Validations from '../middlewares/validations';
 import MatchesController from '../controllers/MatchesController';
 
-const matchesRouter = Router();
+const matchesController = new MatchesController();
 
-matchesRouter.get('/', MatchesController.getAllMatches);
+const router = Router();
 
-export default matchesRouter;
+router.get(
+  '/',
+  (req: Request, res: Response) => matchesController.getAllMatches(req, res),
+);
+
+router.post(
+  '/',
+  Validations.validateToken,
+  (req: Request, res: Response) => matchesController.insertNewMatch(req, res),
+);
+
+router.patch(
+  '/:id',
+  Validations.validateToken,
+  (req: Request, res: Response) => matchesController.updateMatch(req, res),
+);
+
+router.patch(
+  '/:id/finish',
+  Validations.validateToken,
+  (req: Request, res: Response) => matchesController.finishMatch(req, res),
+);
+
+export default router;
