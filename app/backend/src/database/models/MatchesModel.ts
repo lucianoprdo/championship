@@ -9,8 +9,8 @@ import db from '.';
 import TeamsModel from './TeamsModel';
 
 class MatchesModel extends Model<
-InferAttributes<MatchesModel>,
-InferCreationAttributes<MatchesModel>
+  InferAttributes<MatchesModel>,
+  InferCreationAttributes<MatchesModel>
 > {
   declare id: CreationOptional<number>;
   declare homeTeamId: number;
@@ -43,7 +43,7 @@ MatchesModel.init(
       field: 'home_team_goals',
     },
     awayTeamId: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.INTEGER, // Alterado aqui de boolean para integer
       allowNull: false,
       references: {
         model: 'teams',
@@ -57,7 +57,7 @@ MatchesModel.init(
       field: 'away_team_goals',
     },
     inProgress: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BOOLEAN, // Alterado aqui de integer para boolean
       allowNull: false,
       field: 'in_progress',
     },
