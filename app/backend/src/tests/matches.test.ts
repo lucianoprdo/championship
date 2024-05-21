@@ -22,7 +22,7 @@ describe('GET /matches', () => {
 
     expect(status).to.equal(200);
     expect(body).to.be.an('array');
-  });
+  })
 
   afterEach(sinon.restore);
 });

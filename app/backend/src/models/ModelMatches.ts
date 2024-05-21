@@ -30,7 +30,7 @@ export default class ModelMatches implements IMatchesModel {
     });
     return matches.map((match) => ({
       ...match.dataValues,
-      inProgress: !!match.dataValues.inProgress, // Convertendo inProgress para boolean
+      inProgress: !!match.dataValues.inProgress,
     }));
   }
 

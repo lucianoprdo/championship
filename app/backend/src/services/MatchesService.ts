@@ -3,24 +3,28 @@ import ModelMatches from '../models/ModelMatches';
 import { IMatch } from '../Interfaces/matches/IMatches';
 import { ServiceResponse } from '../Interfaces/ServiceResponse';
 import TeamsModel from '../database/models/TeamsModel';
+import ICustomError from '../Interfaces/ICustomError';
 
 export default class MatchesService {
   constructor(
     private matchesModel: IMatchesModel = new ModelMatches(),
     private teamsModel: any = new TeamsModel(),
   ) {}
-
+  
   public async getAllMatches(
     inProgress: string | null,
   ): Promise<ServiceResponse<IMatch[]>> {
-    if (inProgress) {
-      const matches = await this.matchesModel.findAllInProgress(inProgress);
+    try {
+      const matches = inProgress !== null
+        ? await this.matchesModel.findAllInProgress(inProgress)
+        : await this.matchesModel.findAll();
+
       return { status: 'SUCCESSFUL', data: matches };
+    } catch (error) {
+      const customError: ICustomError = new Error('Failed to fetch matches');
+      customError.statusCode = 500;
+      throw customError;
     }
-
-    const matches = await this.matchesModel.findAll();
-
-    return { status: 'SUCCESSFUL', data: matches };
   }
 
   public async finishMatch(

@@ -6,16 +6,13 @@ export default class MatchesController {
   constructor(private matchesService = new MatchesService()) {}
 
   public async getAllMatches(req: Request, res: Response) {
-    if (req.query.inProgress) {
-      const { inProgress } = req.query;
-      const { status, data } = await this.matchesService.getAllMatches(
-        inProgress as string,
-      );
+    const { inProgress } = req.query;
+    const { status, data } = await this.matchesService.getAllMatches(
+      inProgress as string | null,
+    );
 
-      const code = mapStatusHTTP(status);
-
-      return res.status(code).json(data);
-    }
+    const code = mapStatusHTTP(status);
+    return res.status(code).json(data);
   }
 
   public async finishMatch(req: Request, res: Response): Promise<Response> {
