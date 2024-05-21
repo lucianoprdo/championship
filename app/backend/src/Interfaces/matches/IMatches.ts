@@ -11,5 +11,5 @@ export interface IAwayTeam {
 }
 
 export interface IMatch extends IExample, IHomeTeam, IAwayTeam {
-  inProgress: number;
+  inProgress: boolean;
 }
