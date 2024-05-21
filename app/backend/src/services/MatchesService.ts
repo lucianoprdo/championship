@@ -15,7 +15,6 @@ export default class MatchesService {
   ): Promise<ServiceResponse<IMatch[]>> {
     if (inProgress !== null) {
       const matches = await this.matchesModel.findAllInProgress(inProgress);
-      return { status: 'SUCCESSFUL', data: matches };
     }
 
     const matches = await this.matchesModel.findAll();
