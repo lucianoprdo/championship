@@ -16,7 +16,7 @@ export default class ModelMatches implements IMatchesModel {
     });
     return matches.map((match) => ({
       ...match.dataValues,
-      inProgress: !!match.dataValues.inProgress, // Convertendo inProgress para boolean
+      inProgress: !!match.dataValues.inProgress,
     }));
   }
 
@@ -32,19 +32,6 @@ export default class ModelMatches implements IMatchesModel {
       ...match.dataValues,
       inProgress: !!match.dataValues.inProgress, // Convertendo inProgress para boolean
     }));
-  }
-
-  public async findById(id: number): Promise<IMatch | null> {
-    const match = await this.model.findByPk(id, {
-      include: [
-        { model: TeamsModel, attributes: ['teamName'], as: 'homeTeam' },
-        { model: TeamsModel, attributes: ['teamName'], as: 'awayTeam' },
-      ],
-    });
-
-    return match
-      ? { ...match.dataValues, inProgress: !!match.dataValues.inProgress } // Convertendo inProgress para boolean
-      : null;
   }
 
   public async finishMatch(id: string): Promise<void> {
@@ -63,6 +50,18 @@ export default class ModelMatches implements IMatchesModel {
     return {
       ...inserted.dataValues,
       inProgress: !!inserted.dataValues.inProgress,
-    }; // Convertendo inProgress para boolean
+    };
+  }
+
+  public async findById(id: number): Promise<IMatch | null> {
+    const match = await this.model.findByPk(id, {
+      include: [
+        { model: TeamsModel, attributes: ['teamName'], as: 'homeTeam' },
+        { model: TeamsModel, attributes: ['teamName'], as: 'awayTeam' },
+      ],
+    });
+    return match
+      ? { ...match.dataValues, inProgress: !!match.dataValues.inProgress }
+      : null;
   }
 }
