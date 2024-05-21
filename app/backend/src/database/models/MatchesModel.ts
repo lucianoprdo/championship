@@ -9,8 +9,8 @@ import db from '.';
 import TeamsModel from './TeamsModel';
 
 class MatchesModel extends Model<
-  InferAttributes<MatchesModel>,
-  InferCreationAttributes<MatchesModel>
+InferAttributes<MatchesModel>,
+InferCreationAttributes<MatchesModel>
 > {
   declare id: CreationOptional<number>;
   declare homeTeamId: number;

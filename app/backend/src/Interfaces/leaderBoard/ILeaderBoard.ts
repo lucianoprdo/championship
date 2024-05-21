@@ -16,8 +16,8 @@ export interface IGamesStatistics extends ITeamName {
 
 export interface ILeaderBoard
   extends ITeamName,
-    IGoalsStatistics,
-    IGamesStatistics {
+  IGoalsStatistics,
+  IGamesStatistics {
   totalPoints: number;
   goalsBalance: number;
   efficiency: string;
