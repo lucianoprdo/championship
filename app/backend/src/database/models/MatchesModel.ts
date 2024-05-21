@@ -43,7 +43,7 @@ MatchesModel.init(
       field: 'home_team_goals',
     },
     awayTeamId: {
-      type: DataTypes.INTEGER, 
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: 'teams',
@@ -57,7 +57,7 @@ MatchesModel.init(
       field: 'away_team_goals',
     },
     inProgress: {
-      type: DataTypes.BOOLEAN, 
+      type: DataTypes.BOOLEAN,
       allowNull: false,
       field: 'in_progress',
     },
