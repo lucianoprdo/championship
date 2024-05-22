@@ -7,13 +7,11 @@ const allMatchesFromDB = [
     awayTeamGoals: 1,
     inProgress: false,
     homeTeam: {
-      id: 16,
-      teamName: 'São Paulo',
+      teamName: "São Paulo"
     },
     awayTeam: {
-      id: 8,
-      teamName: 'Grêmio',
-    },
+      "teamName": "Grêmio"
+    }
   },
   {
     id: 41,
@@ -23,15 +21,13 @@ const allMatchesFromDB = [
     awayTeamGoals: 0,
     inProgress: true,
     homeTeam: {
-      id: 16,
-      teamName: 'São Paulo',
+      teamName: "São Paulo"
     },
     awayTeam: {
-      id: 9,
-      teamName: 'Internacional',
-    },
-  },
-];
+      teamName: "Internacional"
+    }
+  }
+]
 
 const allMatchesInProgressFromDB = [
   {
@@ -43,14 +39,12 @@ const allMatchesInProgressFromDB = [
       awayTeamGoals: 0,
       inProgress: true,
       homeTeam: {
-        id: 16,
-        teamName: 'São Paulo',
+        teamName: "São Paulo"
       },
       awayTeam: {
-        id: 9,
-        teamName: 'Internacional',
-      },
-    },
+        teamName: "Internacional"
+      }
+    }
   },
   {
     dataValues: {
@@ -61,16 +55,14 @@ const allMatchesInProgressFromDB = [
       awayTeamGoals: 0,
       inProgress: true,
       homeTeam: {
-        id: 6,
-        teamName: 'Ferroviária',
+        teamName: "Ferroviária"
       },
       awayTeam: {
-        id: 1,
-        teamName: 'Avaí/Kindermann',
-      },
-    },
-  },
-];
+        teamName: "Avaí/Kindermann"
+      }
+    }
+  }
+]
 
 const allMatchesNotInProgressFromDB = [
   {
@@ -82,14 +74,12 @@ const allMatchesNotInProgressFromDB = [
       awayTeamGoals: 1,
       inProgress: false,
       homeTeam: {
-        id: 16,
-        teamName: 'São Paulo',
+        teamName: "São Paulo"
       },
       awayTeam: {
-        id: 8,
-        teamName: 'Grêmio',
-      },
-    },
+        teamName: "Grêmio"
+      }
+    }
   },
   {
     dataValues: {
@@ -100,19 +90,17 @@ const allMatchesNotInProgressFromDB = [
       awayTeamGoals: 1,
       inProgress: false,
       homeTeam: {
-        id: 9,
-        teamName: 'Internacional',
+        teamName: "Internacional"
       },
       awayTeam: {
-        id: 14,
-        teamName: 'Santos',
-      },
-    },
-  },
-];
+        teamName: "Santos"
+      }
+    }
+  }
+]
 
 export default {
   allMatchesFromDB,
   allMatchesInProgressFromDB,
-  allMatchesNotInProgressFromDB,
+  allMatchesNotInProgressFromDB
 };

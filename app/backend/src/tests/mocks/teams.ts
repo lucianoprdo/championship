@@ -1,24 +1,24 @@
 const allTeamsFromDB = [
   {
     id: 1,
-    teamName: 'Avaí/Kindermann',
+    teamName: "Avaí/Kindermann"
   },
   {
     id: 2,
-    teamName: 'Bahia',
+    teamName: "Bahia"
   },
   {
     id: 3,
-    teamName: 'Botafogo',
+    teamName: "Botafogo"
   },
-];
+]
 
 const teamFromDB = {
   id: 3,
-  teamName: 'Botafogo',
-};
+  teamName: "Botafogo"
+}
 
 export default {
   allTeamsFromDB,
-  teamFromDB,
-};
+  teamFromDB
+}
