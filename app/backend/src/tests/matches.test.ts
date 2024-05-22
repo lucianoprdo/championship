@@ -66,6 +66,5 @@ describe('Testing Matches Route', () => {
     expect(status).to.equal(200);
   });
 
-
   afterEach(sinon.restore);
 });

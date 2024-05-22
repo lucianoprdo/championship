@@ -119,6 +119,5 @@ describe('Testing User Routes', () => {
     expect(body.message).to.equal('Token must be a valid token');
   });
 
-
   afterEach(sinon.restore);
 });
