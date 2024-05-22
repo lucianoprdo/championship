@@ -6,9 +6,7 @@ import TeamsService from './TeamsService';
 import ICustomError from '../Interfaces/ICustomError';
 
 export default class MatchesService {
-  constructor(
-    private matchesModel: IMatchesModel = new ModelMatches(),
-  ) {}
+  constructor(private matchesModel: IMatchesModel = new ModelMatches()) {}
 
   public async getAllMatches(
     inProgress: string | null,
@@ -45,22 +43,17 @@ export default class MatchesService {
   }
 
   public async insertNewMatch(match: IMatch): Promise<any> {
-    const homeTeam = await TeamsService.findByIdService(match.homeTeamId) as any;
-    const awayTeam = await TeamsService.findByIdService(match.awayTeamId) as any;
+    const homeTeam = await TeamsService.findByIdService(
+      match.homeTeamId,
+    ) as any;
+    const awayTeam = await TeamsService.findByIdService(
+      match.awayTeamId,
+    ) as any;
 
     if (!homeTeam || !awayTeam) {
       return {
-        status: 'NOT_FOUND',
+        status: 404,
         data: { message: 'There is no team with such id!' },
-      };
-    }
-
-    if (homeTeam.data.teamName === awayTeam.data.teamName) {
-      return {
-        status: 'UNABLE_TO_PROCESS',
-        data: {
-          message: 'It is not possible to create a match with two equal teams',
-        },
       };
     }
 
