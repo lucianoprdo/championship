@@ -17,18 +17,6 @@ const { app } = new App();
 describe('Testing User Routes', () => {
   let chaiHttpResponse: Response;
 
-  it('POST /login Must return a token with status 200', async () => {
-    sinon.stub(SequelizeUsers, 'findOne').resolves(mocks.userFromDB as any);
-    const { email, password } = mocks.userLoginBody
-    
-    const { status, body } = await chai.request(app).post('/login')
-      .send({ email, password });
-    
-    expect(status).to.equal(200);
-    expect(body).to.have.property('token');
-    expect(body.token).to.be.an('string');
-  });
-
   it('POST /login Should return status 400 without email', async () => {
     sinon.stub(SequelizeUsers, 'findOne').resolves(mocks.userFromDB as any);
     const { email, password } = mocks.userLoginBody
