@@ -1,4 +1,4 @@
-import { DataTypes, Model, QueryInterface } from 'sequelize';
+import { Model, QueryInterface, DataTypes } from 'sequelize';
 import { ITeams } from '../../Interfaces/teams/ITeams';
 
 export default {
@@ -6,17 +6,18 @@ export default {
     return queryInterface.createTable<Model<ITeams>>('teams', {
       id: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         primaryKey: true,
         autoIncrement: true,
-        allowNull: false,
       },
       teamName: {
         type: DataTypes.STRING,
-        allowNull: false,
         field: 'team_name',
+        allowNull: false,
       },
     });
   },
+
   down(queryInterface: QueryInterface) {
     return queryInterface.dropTable('teams');
   },

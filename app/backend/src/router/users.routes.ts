@@ -1,21 +1,21 @@
 import { Request, Router, Response } from 'express';
-import UsersController from '../controllers/UsersController';
-import Validations from '../middlewares/validations';
+import Validations from '../middlewares/Validations';
+import UsersController from '../controller/UsersController';
 
 const usersController = new UsersController();
 
-const usersRouter = Router();
+const router = Router();
 
-usersRouter.post(
+router.post(
   '/',
   Validations.validateLogin,
   (req: Request, res: Response) => usersController.login(req, res),
 );
 
-usersRouter.get(
+router.get(
   '/role',
   Validations.validateToken,
   (req: Request, res: Response) => usersController.getRole(req, res),
 );
 
-export default usersRouter;
+export default router;

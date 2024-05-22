@@ -1,4 +1,4 @@
-import IExample from '../IExample';
+import { Identifiable } from '..';
 
 export interface IHomeTeam {
   homeTeamId: number;
@@ -10,6 +10,6 @@ export interface IAwayTeam {
   awayTeamGoals: number;
 }
 
-export interface IMatch extends IExample, IHomeTeam, IAwayTeam {
-  inProgress: boolean;
+export interface IMatch extends Identifiable, IHomeTeam, IAwayTeam{
+  inProgress: number;
 }

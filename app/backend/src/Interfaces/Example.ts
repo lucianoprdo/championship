@@ -1,3 +1,3 @@
 export default interface IExample {
-  id: number;
+  id: number,
 }

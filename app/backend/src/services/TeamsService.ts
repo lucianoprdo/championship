@@ -1,22 +1,22 @@
-import TeamsModel, { TeamsSequelizeModel } from '../database/models/TeamsModel';
+import { ITeams } from '../Interfaces/teams/ITeams';
 import { ServiceResponse } from '../Interfaces/ServiceResponse';
+import TeamsModel from '../models/TeamsModel';
+import { ITeamsModel } from '../Interfaces/teams/ITeamsModel';
 
-async function getAllService(): Promise<
-ServiceResponse<TeamsSequelizeModel[]>
-> {
-  const teamsDb = await TeamsModel.findAll();
-  return { status: 'SUCCESSFUL', data: teamsDb };
+export default class TeamsService {
+  constructor(
+    private teamsModel: ITeamsModel = new TeamsModel(),
+  ) {}
+
+  public async getAllTeams(): Promise<ServiceResponse<ITeams[]>> {
+    const teams = await this.teamsModel.findAll();
+
+    return { status: 'SUCCESSFUL', data: teams };
+  }
+
+  public async getById(id: number): Promise<ServiceResponse<ITeams | null>> {
+    const team = await this.teamsModel.findById(id);
+
+    return { status: 'SUCCESSFUL', data: team };
+  }
 }
-
-async function findByIdService(
-  id: number,
-): Promise<ServiceResponse<TeamsSequelizeModel | null>> {
-  const teamsIdDb = await TeamsModel.findByPk(Number(id));
-
-  return { status: 'SUCCESSFUL', data: teamsIdDb };
-}
-
-export default {
-  getAllService,
-  findByIdService,
-};

@@ -1,11 +1,11 @@
-import IExample from '../IExample';
+import { Identifiable } from '..';
 
 export interface ILogin {
   email: string;
   password: string;
 }
 
-export interface IUser extends IExample, ILogin {
+export interface IUser extends Identifiable, ILogin {
   username: string;
   role: string;
 }
