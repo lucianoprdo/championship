@@ -2,13 +2,12 @@ import { IMatchesModel } from '../Interfaces/matches/IMatchesModel';
 import ModelMatches from '../models/ModelMatches';
 import { IMatch } from '../Interfaces/matches/IMatches';
 import { ServiceResponse } from '../Interfaces/ServiceResponse';
-import TeamsModel from '../database/models/TeamsModel';
+import TeamsService from './TeamsService';
 import ICustomError from '../Interfaces/ICustomError';
 
 export default class MatchesService {
   constructor(
     private matchesModel: IMatchesModel = new ModelMatches(),
-    private teamsModel: any = new TeamsModel(),
   ) {}
 
   public async getAllMatches(
@@ -45,9 +44,9 @@ export default class MatchesService {
     return { status: 'SUCCESSFUL', data: { message: 'Updated' } };
   }
 
-  public async insertNewMatch(match: IMatch): Promise<ServiceResponse<IMatch>> {
-    const homeTeam = await this.teamsModel.findById(match.homeTeamId);
-    const awayTeam = await this.teamsModel.findById(match.awayTeamId);
+  public async insertNewMatch(match: IMatch): Promise<any> {
+    const homeTeam = await TeamsService.findByIdService(match.homeTeamId) as any;
+    const awayTeam = await TeamsService.findByIdService(match.awayTeamId) as any;
 
     if (!homeTeam || !awayTeam) {
       return {
@@ -56,7 +55,7 @@ export default class MatchesService {
       };
     }
 
-    if (homeTeam.teamName === awayTeam.teamName) {
+    if (homeTeam.data.teamName === awayTeam.data.teamName) {
       return {
         status: 'UNABLE_TO_PROCESS',
         data: {

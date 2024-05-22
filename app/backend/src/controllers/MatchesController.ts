@@ -34,9 +34,9 @@ export default class MatchesController {
 
   public async insertNewMatch(req: Request, res: Response): Promise<Response> {
     const match = req.body;
-    const result = await this.matchesService.insertNewMatch(match);
+    const { status, data } = await this.matchesService.insertNewMatch(match);
     return res
-      .status(result.status === 'CREATED' ? 201 : 400)
-      .json(result.data);
+      .status(status === 'CREATED' ? 201 : 400)
+      .json(data);
   }
 }
