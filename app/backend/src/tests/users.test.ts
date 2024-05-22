@@ -7,7 +7,6 @@ import { App } from '../app';
 import SequelizeUsers from '../database/models/SequelizeUsers';
 import mocks from './mocks/users';
 import JWT from '../utils/JWT';
-import Validations from '../middlewares/Validations';
 
 chai.use(chaiHttp);
 
@@ -107,7 +106,6 @@ describe('Testing User Routes', () => {
   });
 
   it('GET /login/role with invalid token return status 401 with correct error message', async () => {
-    // sinon.stub(SequelizeUsers, 'findOne').resolves(mocks.userFromDB as any);
     sinon.stub(JWT, 'verify').returns("Token must be a valid token");
 
     const { email, password } = mocks.userLoginBody
