@@ -1,4 +1,5 @@
-const leaderBoardResponseBody = [
+//mocks
+const leaderBoardResponseBody: ILeaderBoard[] = [
   {
     name: "Palmeiras",
     totalPoints: 13,
@@ -9,7 +10,7 @@ const leaderBoardResponseBody = [
     goalsFavor: 17,
     goalsOwn: 5,
     goalsBalance: 12,
-    efficiency: 86.67
+    efficiency: "86.67"
   },
   {
     name: "Corinthians",
@@ -21,7 +22,7 @@ const leaderBoardResponseBody = [
     goalsFavor: 12,
     goalsOwn: 3,
     goalsBalance: 9,
-    efficiency: 80
+    efficiency: "80"
   },
   {
     name: "Santos",
@@ -33,9 +34,9 @@ const leaderBoardResponseBody = [
     goalsFavor: 12,
     goalsOwn: 6,
     goalsBalance: 6,
-    efficiency: 73.33
+    efficiency: "73.33"
   },
-]
+];
 
 export default {
   leaderBoardResponseBody

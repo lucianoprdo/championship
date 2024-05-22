@@ -13,7 +13,7 @@ const { expect } = chai;
 
 const { app } = new App();
 
-describe.skip('Testing LeaderBoard Route', () => {
+describe('Testing LeaderBoard Route', () => {
   let chaiHttpResponse: Response;
 
   it('GET /teams It should return a list of teams with status 200', async () => {
