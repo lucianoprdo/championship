@@ -1,5 +1,4 @@
-//mocks
-const leaderBoardResponseBody: ILeaderBoard[] = [
+const leaderBoardResponseBody = [
   {
     name: "Palmeiras",
     totalPoints: 13,
